@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>PromoConnect Sign Up</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #0b0f1a;
+        color: #ffffff;
+    }
+
+    :root{
+        --blue:#3b82f6;
+        --blue-dark:#2563eb;
+        --card:#111827;
+        --border:#1f2937;
+    }
+
+    .layout{
+        display:flex;
+        min-height:100vh;
+    }
+
+    
+    .left{
+        flex:1;
+        background:linear-gradient(135deg,#0f172a,#0b0f1a);
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        padding:60px;
+        border-right:1px solid var(--border);
+    }
+
+    .brand-logo{
+        width:80px;
+        height:80px;
+        border-radius:20px;
+        background:var(--blue);
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        margin-bottom:20px;
+    }
+
+    .brand-title{
+        font-size:36px;
+        font-weight:800;
+        margin:0;
+    }
+
+    .brand-title span{
+        color:var(--blue);
+    }
+
+    .brand-text{
+        color:#94a3b8;
+        margin-top:10px;
+        max-width:400px;
+        line-height:1.5;
+    }
+
+   
+    .right{
+        flex:1;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        padding:20px;
+    }
+
+    .container {
+        width:100%;
+        max-width:420px;
+        background: var(--card);
+        padding: 22px;
+        border-radius: 16px;
+        border: 1px solid var(--border);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    h2 {
+        margin: 10px 0 5px;
+        font-size: 20px;
+    }
+
+    .subtitle{
+        color:#94a3b8;
+        font-size:13px;
+        margin-bottom:15px;
+    }
+
+  
+    .tabs{
+        display:flex;
+        gap:10px;
+        margin-bottom:15px;
+    }
+
+    .tab{
+        flex:1;
+        text-align:center;
+        padding:10px;
+        border-radius:10px;
+        cursor:pointer;
+        font-weight:bold;
+        background:#0f172a;
+        border:1px solid var(--border);
+        color:#94a3b8;
+    }
+
+    .tab.active{
+        background:var(--blue);
+        color:white;
+    }
+
+    input, select {
+        width: 100%;
+        padding: 12px;
+        margin: 8px 0;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        background: #0f172a;
+        color: #ffffff;
+        outline: none;
+    }
+
+    input::placeholder {
+        color: #64748b;
+    }
+
+    .btn {
+        background: var(--blue);
+        color: white;
+        padding: 12px;
+        border: none;
+        width: 100%;
+        border-radius: 25px;
+        margin-top: 10px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    .btn:hover {
+        background: var(--blue-dark);
+    }
+
+    .hidden { display:none; }
+
+    /* MOBILE */
+    @media(max-width:900px){
+        .layout{flex-direction:column;}
+        .left{padding:30px; text-align:center;}
+        .brand-text{margin:auto;}
+    }
+</style>
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- LEFT BRAND -->
+    <div class="left">
+        <div class="brand-logo">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+                <path d="M6 6H4" stroke="white" stroke-width="2"/>
+                <path d="M4 6L6 14C6.5 16 8 17 10 17H16C18 17 19.5 16 20 14L22 8H6" stroke="white" stroke-width="2"/>
+                <path d="M9 21C9.5 21 10 20.5 10 20C10 19.5 9.5 19 9 19C8.5 19 8 19.5 8 20C8 20.5 8.5 21 9 21Z" stroke="white"/>
+                <path d="M17 21C17.5 21 18 20.5 18 20C18 19.5 17.5 19 17 19C16.5 19 16 19.5 16 20C16 20.5 16.5 21 17 21Z" stroke="white"/>
+                <path d="M12 8V4M12 4L10 6M12 4L14 6" stroke="white"/>
+            </svg>
+        </div>
+
+        <h1 class="brand-title">Promo<span>Connect</span></h1>
+        <p class="brand-text">
+            Discover promos, grow your business, and connect customers with exclusive deals in real time.
+        </p>
+    </div>
+
+    
+    <div class="right">
+
+        <div class="container">
+
+            <div class="tabs">
+                <div class="tab active" onclick="show('customer')" id="tabCustomer">Customer</div>
+                <div class="tab" onclick="show('business')" id="tabBusiness">Admin</div>
+            </div>
+
+            <!-- CUSTOMER -->
+            <div id="customer">
+                <h2>Create Customer Account</h2>
+                <div class="subtitle">Join promos and earn rewards instantly</div>
+
+                <input type="text" placeholder="Full Name" />
+                <input type="email" placeholder="Email Address" />
+                <input type="password" placeholder="Password" />
+
+                <select>
+                    <option>Preferred Category</option>
+                    <option>Food</option>
+                    <option>Drinks</option>
+                    <option>Coffee</option>
+                </select>
+
+                <button class="btn" onclick="register('customer')">
+                    Create Customer Account
+                </button>
+            </div>
+
+            <!-- ADMIN -->
+            <div id="business" class="hidden">
+                <h2>Create Admin Account</h2>
+                <div class="subtitle">Promote your shop and attract customers</div>
+
+                <input type="text" placeholder="Business Name" />
+                <input type="text" placeholder="Owner Name" />
+                <input type="email" placeholder="Business Email" />
+                <input type="password" placeholder="Password" />
+                <input type="text" placeholder="Business Address" />
+
+                <select>
+                    <option>Business Category</option>
+                    <option>Restaurant</option>
+                    <option>Cafe</option>
+                    <option>Retail Shop</option>
+                </select>
+
+                <button class="btn" onclick="register('admin')">
+                    Create Admin Account
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+function show(type){
+    document.getElementById('customer').classList.add('hidden');
+    document.getElementById('business').classList.add('hidden');
+
+    document.getElementById('tabCustomer').classList.remove('active');
+    document.getElementById('tabBusiness').classList.remove('active');
+
+    if(type==='customer'){
+        document.getElementById('customer').classList.remove('hidden');
+        document.getElementById('tabCustomer').classList.add('active');
+    } else {
+        document.getElementById('business').classList.remove('hidden');
+        document.getElementById('tabBusiness').classList.add('active');
+    }
+}
+
+
+function register(type){
+    if(type === 'customer'){
+        window.location.href = "customer.html";
+    } 
+    else if(type === 'admin'){
+        window.location.href = "admin.html";
+    }
+}
+</script>
+
+</body>
+</html>
